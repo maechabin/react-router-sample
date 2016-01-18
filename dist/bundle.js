@@ -25195,10 +25195,16 @@ var _superagent2 = _interopRequireDefault(_superagent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var _value = { value: null };
+
 var Enter = _react2.default.createClass({
   displayName: "Enter",
   getInitialState: function getInitialState() {
-    return { value: null };
+    return _value;
+  },
+  _setValue: function _setValue(e) {
+    _value.value = e.target.value;
+    this.setState(_value);
   },
   render: function render() {
     return _react2.default.createElement(
@@ -25209,7 +25215,10 @@ var Enter = _react2.default.createClass({
         null,
         "入力ページ"
       ),
-      _react2.default.createElement("input", { type: "text" }),
+      _react2.default.createElement("input", { type: "text", value: this.state.value,
+        onBlur: this._setValue,
+        onChange: this._setValue
+      }),
       _react2.default.createElement(
         _reactRouter.Link,
         { to: "confirm" },
@@ -25225,6 +25234,28 @@ var Enter = _react2.default.createClass({
 
 var Confirm = _react2.default.createClass({
   displayName: "Confirm",
+  getInitialState: function getInitialState() {
+    return _value;
+  },
+  someHandler: function someHandler() {
+    _reactRouter.browserHistory.push("/finish");
+  },
+  _sendValue: function _sendValue() {
+    var _this = this;
+
+    _superagent2.default.get("./index.html").query({
+      value: _value.value
+    }).end(function (err, res) {
+      if (err || !res.ok) {
+        console.log("Error");
+        return;
+      } else {
+        if (res.status === 200) {
+          _this.someHandler();
+        }
+      }
+    });
+  },
   render: function render() {
     return _react2.default.createElement(
       "div",
@@ -25234,11 +25265,24 @@ var Confirm = _react2.default.createClass({
         null,
         "確認ページ"
       ),
-      _react2.default.createElement("p", null),
+      _react2.default.createElement(
+        "p",
+        null,
+        this.state.value
+      ),
       _react2.default.createElement(
         "button",
-        null,
+        { onClick: this._sendValue },
         "送信する"
+      ),
+      _react2.default.createElement(
+        _reactRouter.Link,
+        { to: "/" },
+        _react2.default.createElement(
+          "button",
+          null,
+          "戻る"
+        )
       )
     );
   }
