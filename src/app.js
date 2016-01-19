@@ -16,13 +16,13 @@ const Enter = React.createClass({
   render() {
     return (
       <div>
-        <h2>入力ページ</h2>
+        <h2>Enter Page</h2>
         <input type="text" value={this.state.value}
           onBlur={this._setValue}
           onChange={this._setValue}
         />
         <Link to="confirm">
-          <button>確認する</button>
+          <button>Confirm</button>
         </Link>
       </div>
     );
@@ -34,6 +34,7 @@ const Confirm = React.createClass({
     return _value;
   },
   someHandler() {
+    _value.value = "";
     browserHistory.push("/finish");
   },
   _sendValue() {
@@ -56,11 +57,11 @@ const Confirm = React.createClass({
   render() {
     return (
       <div>
-        <h2>確認ページ</h2>
+        <h2>Confirm Page</h2>
         <p>{this.state.value}</p>
-        <button onClick={this._sendValue}>送信する</button>
+        <button onClick={this._sendValue}>Send</button>
         <Link to="/">
-          <button>戻る</button>
+          <button>Back</button>
         </Link>
       </div>
     );
@@ -68,10 +69,16 @@ const Confirm = React.createClass({
 });
 
 const Finish = React.createClass({
+  getInitialState() {
+    return _value;
+  },
   render() {
     return (
       <div>
-        <h2>完了ページ</h2>
+        <h2>Finish Page</h2>
+          <Link to="/">
+            <button>Top</button>
+          </Link>
       </div>
     );
   }

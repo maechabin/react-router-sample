@@ -25213,7 +25213,7 @@ var Enter = _react2.default.createClass({
       _react2.default.createElement(
         "h2",
         null,
-        "入力ページ"
+        "Enter Page"
       ),
       _react2.default.createElement("input", { type: "text", value: this.state.value,
         onBlur: this._setValue,
@@ -25225,7 +25225,7 @@ var Enter = _react2.default.createClass({
         _react2.default.createElement(
           "button",
           null,
-          "確認する"
+          "Confirm"
         )
       )
     );
@@ -25238,6 +25238,7 @@ var Confirm = _react2.default.createClass({
     return _value;
   },
   someHandler: function someHandler() {
+    _value.value = "";
     _reactRouter.browserHistory.push("/finish");
   },
   _sendValue: function _sendValue() {
@@ -25263,7 +25264,7 @@ var Confirm = _react2.default.createClass({
       _react2.default.createElement(
         "h2",
         null,
-        "確認ページ"
+        "Confirm Page"
       ),
       _react2.default.createElement(
         "p",
@@ -25273,7 +25274,7 @@ var Confirm = _react2.default.createClass({
       _react2.default.createElement(
         "button",
         { onClick: this._sendValue },
-        "送信する"
+        "Send"
       ),
       _react2.default.createElement(
         _reactRouter.Link,
@@ -25281,7 +25282,7 @@ var Confirm = _react2.default.createClass({
         _react2.default.createElement(
           "button",
           null,
-          "戻る"
+          "Back"
         )
       )
     );
@@ -25290,6 +25291,9 @@ var Confirm = _react2.default.createClass({
 
 var Finish = _react2.default.createClass({
   displayName: "Finish",
+  getInitialState: function getInitialState() {
+    return _value;
+  },
   render: function render() {
     return _react2.default.createElement(
       "div",
@@ -25297,7 +25301,16 @@ var Finish = _react2.default.createClass({
       _react2.default.createElement(
         "h2",
         null,
-        "完了ページ"
+        "Finish Page"
+      ),
+      _react2.default.createElement(
+        _reactRouter.Link,
+        { to: "/" },
+        _react2.default.createElement(
+          "button",
+          null,
+          "Top"
+        )
       )
     );
   }
