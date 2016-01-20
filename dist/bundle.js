@@ -25197,6 +25197,17 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var _value = { value: null };
 
+var App = _react2.default.createClass({
+  displayName: "App",
+  render: function render() {
+    return _react2.default.createElement(
+      "div",
+      null,
+      this.props.children
+    );
+  }
+});
+
 var Enter = _react2.default.createClass({
   displayName: "Enter",
   getInitialState: function getInitialState() {
@@ -25319,9 +25330,13 @@ var Finish = _react2.default.createClass({
 (0, _reactDom.render)(_react2.default.createElement(
   _reactRouter.Router,
   { history: _reactRouter.browserHistory },
-  _react2.default.createElement(_reactRouter.Router, { path: "/", component: Enter }),
-  _react2.default.createElement(_reactRouter.Router, { path: "confirm", component: Confirm }),
-  _react2.default.createElement(_reactRouter.Router, { path: "finish", component: Finish })
+  _react2.default.createElement(
+    _reactRouter.Route,
+    { path: "/", component: App },
+    _react2.default.createElement(_reactRouter.IndexRoute, { component: Enter }),
+    _react2.default.createElement(_reactRouter.Route, { path: "confirm", component: Confirm }),
+    _react2.default.createElement(_reactRouter.Route, { path: "finish", component: Finish })
+  )
 ), document.getElementById("content"));
 
 },{"react":215,"react-dom":1,"react-router":29,"superagent":216}]},{},[220]);

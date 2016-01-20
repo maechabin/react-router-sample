@@ -1,9 +1,19 @@
 import React, { PropTypes } from "react";
 import { render } from "react-dom";
-import { Router, Route, Link, browserHistory } from "react-router"
+import { IndexRoute, Router, Route, Link, browserHistory } from "react-router"
 import request from "superagent";
 
 var _value = {value: null}
+
+const App = React.createClass({
+  render() {
+    return (
+      <div>
+        { this.props.children }
+      </div>
+    );
+  }
+});
 
 const Enter = React.createClass({
   getInitialState() {
@@ -86,8 +96,10 @@ const Finish = React.createClass({
 
 render((
   <Router history={browserHistory}>
-    <Router path="/" component={Enter} />
-    <Router path="confirm" component={Confirm} />
-    <Router path="finish" component={Finish} />
+    <Route path="/" component={App}>
+      <IndexRoute component={Enter} />
+      <Route path="confirm" component={Confirm} />
+      <Route path="finish" component={Finish} />
+    </Route>
   </Router>
 ), document.getElementById("content"));
