@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
 import { render } from "react-dom";
-import { IndexRoute, Router, Route, Link, browserHistory } from "react-router"
+import { IndexRoute, Router, Route, Link, browserHistory } from "react-router";
 import request from "superagent";
 
 var _value = {value: null}
@@ -9,7 +9,7 @@ const App = React.createClass({
   render() {
     return (
       <div>
-        { this.props.children }
+        {this.props.children}
       </div>
     );
   }
@@ -42,6 +42,10 @@ const Enter = React.createClass({
 const Confirm = React.createClass({
   getInitialState() {
     return _value;
+  },
+  componentWillMount() {
+    var element = document.getElementById("main");
+    element.scrollIntoView();
   },
   someHandler() {
     _value.value = "";

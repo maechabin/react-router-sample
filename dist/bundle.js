@@ -25248,6 +25248,10 @@ var Confirm = _react2.default.createClass({
   getInitialState: function getInitialState() {
     return _value;
   },
+  componentWillMount: function componentWillMount() {
+    var element = document.getElementById("main");
+    element.scrollIntoView();
+  },
   someHandler: function someHandler() {
     _value.value = "";
     _reactRouter.browserHistory.push("/finish");
