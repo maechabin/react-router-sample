@@ -25275,7 +25275,7 @@ var Confirm = _react2.default.createClass({
   render: function render() {
     return _react2.default.createElement(
       "div",
-      null,
+      { ref: "aaa" },
       _react2.default.createElement(
         "h2",
         null,

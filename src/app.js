@@ -44,7 +44,7 @@ const Confirm = React.createClass({
     return _value;
   },
   componentWillMount() {
-    var element = document.getElementById("main");
+    let element = document.getElementById("main");
     element.scrollIntoView();
   },
   someHandler() {
@@ -70,7 +70,7 @@ const Confirm = React.createClass({
   },
   render() {
     return (
-      <div>
+      <div ref="aaa">
         <h2>Confirm Page</h2>
         <p>{this.state.value}</p>
         <button onClick={this._sendValue}>Send</button>
