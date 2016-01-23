@@ -25197,13 +25197,39 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var _value = { value: null };
 
+var content = document.getElementById("content");
+
+var Header = _react2.default.createClass({
+  displayName: "Header",
+  render: function render() {
+    return _react2.default.createElement(
+      "header",
+      null,
+      _react2.default.createElement(
+        "h1",
+        null,
+        "react-router-sample"
+      )
+    );
+  }
+});
+
 var App = _react2.default.createClass({
   displayName: "App",
+
+  style: {
+    "textAlign": "center"
+  },
   render: function render() {
     return _react2.default.createElement(
       "div",
-      null,
-      this.props.children
+      { style: this.style },
+      _react2.default.createElement(Header, null),
+      _react2.default.createElement(
+        "main",
+        null,
+        this.props.children
+      )
     );
   }
 });
@@ -25232,7 +25258,7 @@ var Enter = _react2.default.createClass({
       }),
       _react2.default.createElement(
         _reactRouter.Link,
-        { to: "confirm" },
+        { to: { pathname: "confirm" } },
         _react2.default.createElement(
           "button",
           null,
@@ -25249,8 +25275,7 @@ var Confirm = _react2.default.createClass({
     return _value;
   },
   componentWillMount: function componentWillMount() {
-    var element = document.getElementById("main");
-    element.scrollIntoView();
+    content.scrollIntoView();
   },
   someHandler: function someHandler() {
     _value.value = "";
@@ -25298,7 +25323,7 @@ var Confirm = _react2.default.createClass({
       ),
       _react2.default.createElement(
         _reactRouter.Link,
-        { to: "/" },
+        { to: { pathname: "/" } },
         _react2.default.createElement(
           "button",
           null,
@@ -25314,6 +25339,9 @@ var Finish = _react2.default.createClass({
   getInitialState: function getInitialState() {
     return _value;
   },
+  componentWillMount: function componentWillMount() {
+    content.scrollIntoView();
+  },
   render: function render() {
     return _react2.default.createElement(
       "div",
@@ -25325,7 +25353,7 @@ var Finish = _react2.default.createClass({
       ),
       _react2.default.createElement(
         _reactRouter.Link,
-        { to: "/" },
+        { to: { pathname: "/" } },
         _react2.default.createElement(
           "button",
           null,
@@ -25346,6 +25374,6 @@ var Finish = _react2.default.createClass({
     _react2.default.createElement(_reactRouter.Route, { path: "confirm", component: Confirm }),
     _react2.default.createElement(_reactRouter.Route, { path: "finish", component: Finish })
   )
-), document.getElementById("content"));
+), content);
 
 },{"react":215,"react-dom":1,"react-router":29,"superagent":216}]},{},[220]);

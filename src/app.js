@@ -5,12 +5,30 @@ import request from "superagent";
 
 var _value = {value: null}
 
-const App = React.createClass({
+const content = document.getElementById("content");
+
+const Header = React.createClass({
   render() {
     return (
-      <div>
-        {this.props.children}
-      </div>
+      <header>
+        <h1>react-router-sample</h1>
+      </header>
+    );
+  }
+});
+
+const App = React.createClass({
+  style: {
+    "textAlign": "center"
+  },
+  render() {
+    return (
+      <div style={this.style}>
+        <Header />
+        <main>
+          {this.props.children}
+        </main>
+     </div>
     );
   }
 });
@@ -31,7 +49,7 @@ const Enter = React.createClass({
           onBlur={this._setValue}
           onChange={this._setValue}
         />
-        <Link to="confirm">
+        <Link to={{pathname: "confirm"}}>
           <button>Confirm</button>
         </Link>
       </div>
@@ -44,8 +62,7 @@ const Confirm = React.createClass({
     return _value;
   },
   componentWillMount() {
-    let element = document.getElementById("main");
-    element.scrollIntoView();
+    content.scrollIntoView();
   },
   someHandler() {
     _value.value = "";
@@ -75,7 +92,7 @@ const Confirm = React.createClass({
         <p>{this.state.value}</p>
         <p>{ this.props.params.id }</p>
         <button onClick={this._sendValue}>Send</button>
-        <Link to="/">
+        <Link to={{pathname: "/"}}>
           <button>Back</button>
         </Link>
       </div>
@@ -87,11 +104,14 @@ const Finish = React.createClass({
   getInitialState() {
     return _value;
   },
+  componentWillMount() {
+    content.scrollIntoView();
+  },
   render() {
     return (
       <div>
         <h2>Finish Page</h2>
-          <Link to="/">
+          <Link to={{pathname: "/"}}>
             <button>Top</button>
           </Link>
       </div>
@@ -107,4 +127,4 @@ render((
       <Route path="finish" component={Finish} />
     </Route>
   </Router>
-), document.getElementById("content"));
+), content);
