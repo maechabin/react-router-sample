@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
 import { render } from "react-dom";
-import { IndexRoute, Router, Route, Link, browserHistory } from "react-router";
+import { browserHistory, Router, Route, IndexRoute, Link } from "react-router";
 import request from "superagent";
 
 var _value = {value: null}
@@ -66,7 +66,7 @@ const Confirm = React.createClass({
   },
   someHandler() {
     _value.value = "";
-    browserHistory.push("/finish");
+    browserHistory.push("finish");
   },
   _sendValue() {
     request
@@ -111,9 +111,19 @@ const Finish = React.createClass({
     return (
       <div>
         <h2>Finish Page</h2>
-          <Link to={{pathname: "/"}}>
-            <button>Top</button>
-          </Link>
+        <Link to={{pathname: "/"}}>
+          <button>Top</button>
+        </Link>
+      </div>
+    );
+  }
+});
+
+const NotFound = React.createClass({
+  render() {
+    return (
+      <div>
+        <h2>Not Found</h2>
       </div>
     );
   }
@@ -125,6 +135,7 @@ render((
       <IndexRoute component={Enter} />
       <Route path="confirm" component={Confirm} />
       <Route path="finish" component={Finish} />
+      <Route path="*" component={NotFound} />
     </Route>
   </Router>
 ), content);

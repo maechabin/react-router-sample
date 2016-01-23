@@ -25279,7 +25279,7 @@ var Confirm = _react2.default.createClass({
   },
   someHandler: function someHandler() {
     _value.value = "";
-    _reactRouter.browserHistory.push("/finish");
+    _reactRouter.browserHistory.push("finish");
   },
   _sendValue: function _sendValue() {
     var _this = this;
@@ -25364,6 +25364,21 @@ var Finish = _react2.default.createClass({
   }
 });
 
+var NotFound = _react2.default.createClass({
+  displayName: "NotFound",
+  render: function render() {
+    return _react2.default.createElement(
+      "div",
+      null,
+      _react2.default.createElement(
+        "h2",
+        null,
+        "Not Found"
+      )
+    );
+  }
+});
+
 (0, _reactDom.render)(_react2.default.createElement(
   _reactRouter.Router,
   { history: _reactRouter.browserHistory },
@@ -25372,7 +25387,8 @@ var Finish = _react2.default.createClass({
     { path: "/", component: App },
     _react2.default.createElement(_reactRouter.IndexRoute, { component: Enter }),
     _react2.default.createElement(_reactRouter.Route, { path: "confirm", component: Confirm }),
-    _react2.default.createElement(_reactRouter.Route, { path: "finish", component: Finish })
+    _react2.default.createElement(_reactRouter.Route, { path: "finish", component: Finish }),
+    _react2.default.createElement(_reactRouter.Route, { path: "*", component: NotFound })
   )
 ), content);
 
