@@ -70,9 +70,10 @@ const Confirm = React.createClass({
   },
   render() {
     return (
-      <div ref="aaa">
+      <div>
         <h2>Confirm Page</h2>
         <p>{this.state.value}</p>
+        <p>{ this.props.params.id }</p>
         <button onClick={this._sendValue}>Send</button>
         <Link to="/">
           <button>Back</button>

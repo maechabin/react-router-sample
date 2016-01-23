@@ -25275,7 +25275,7 @@ var Confirm = _react2.default.createClass({
   render: function render() {
     return _react2.default.createElement(
       "div",
-      { ref: "aaa" },
+      null,
       _react2.default.createElement(
         "h2",
         null,
@@ -25285,6 +25285,11 @@ var Confirm = _react2.default.createClass({
         "p",
         null,
         this.state.value
+      ),
+      _react2.default.createElement(
+        "p",
+        null,
+        this.props.params.id
       ),
       _react2.default.createElement(
         "button",

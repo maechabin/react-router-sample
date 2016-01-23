@@ -6,16 +6,14 @@
   "scripts": {
     "watch": "watchify -t babelify ./src/app.js -o ./dist/bundle.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "@maechabin",
+  "license": "Mit",
   "dependencies": {
     "flux": "^2.1.1",
-    "history": "^2.0.0-rc2",
     "object-assign": "^4.0.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-router": "^2.0.0-rc5",
-    "scroll-behavior": "^0.3.0",
     "superagent": "^1.5.0"
   },
   "devDependencies": {
